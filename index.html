@@ -1,47 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Ficha de Registro - Cadastro/Edicao</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
-        input, select { width: 100%; padding: 8px; margin: 5px 0; }
-        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; cursor: pointer; }
-        button:hover { background: #0056b3; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha de Registro - Cadastro</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f2f2f2; padding: 20px; }
+    h2 { text-align: center; }
+    form { background: #fff; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; }
+    input, select { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
+    button { background: #007bff; color: white; padding: 10px; border: none; cursor: pointer; width: 100%; }
+    button:hover { background: #0056b3; }
+</style>
 </head>
 <body>
-    <h2>Cadastro / Edição de Ficha de Registro</h2>
-    <form id="registroForm">
-        <input type="text" name="Nome do Trabalhador" placeholder="Nome do Trabalhador" required>
-        <input type="text" name="CPF" placeholder="CPF" required>
-        <input type="text" name="Telefone" placeholder="Telefone">
-        <input type="text" name="Cargo" placeholder="Cargo">
-        <input type="number" name="Salário" placeholder="Salário">
-        <!-- Adicione aqui todos os campos que deseja -->
-        <button type="submit">Salvar Registro</button>
-    </form>
-    <script>
-        const scriptURL = 'SUA_URL_DO_APPS_SCRIPT';
-        const form = document.getElementById('registroForm');
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const jsonData = {};
-            formData.forEach((value, key) => jsonData[key] = value);
+<h2>Ficha de Registro de Profissionais</h2>
+<form id="registroForm">
+    <input type="text" name="Nome do Trabalhador" placeholder="Nome do Trabalhador" required>
+    <input type="text" name="Nome do Pai" placeholder="Nome do Pai">
+    <input type="text" name="Nome da Mãe" placeholder="Nome da Mãe">
+    <input type="text" name="CPF" placeholder="CPF" required>
+    <input type="text" name="PIS" placeholder="PIS">
+    <input type="text" name="Filiação" placeholder="Filiação">
+    <input type="text" name="Cidade de nascimento" placeholder="Cidade de nascimento">
+    <input type="date" name="Data de nascimento" placeholder="Data de nascimento">
+    <input type="text" name="Estado Civil" placeholder="Estado Civil">
+    <input type="text" name="Raça/Etinia" placeholder="Raça/Etnia">
+    <input type="text" name="Endereço" placeholder="Endereço">
+    <input type="text" name="Bairro" placeholder="Bairro">
+    <input type="text" name="Cidade/ UF" placeholder="Cidade/UF">
+    <input type="text" name="CEP" placeholder="CEP">
+    <input type="text" name="Telefone" placeholder="Telefone">
+    <input type="text" name="Escolaridade" placeholder="Escolaridade">
+    <input type="text" name="CNH (Sim/Não)" placeholder="CNH (Sim/Não)">
+    <input type="text" name="Categoria CNH" placeholder="Categoria CNH">
+    <input type="text" name="Cargo" placeholder="Cargo">
+    <input type="number" step="0.01" name="Salário" placeholder="Salário">
+    <input type="text" name="Admissão (Data)" placeholder="Admissão (Data)">
+    <input type="text" name="Contrato de Experiência (Sim/Não)" placeholder="Contrato de Experiência (Sim/Não)">
+    <input type="text" name="Período Experiência (dias)" placeholder="Período Experiência (dias)">
+    <input type="text" name="Contrato Prazo Determinado (Sim/Não)" placeholder="Contrato Prazo Determinado (Sim/Não)">
+    <input type="text" name="Período Contrato Determinado (dias)" placeholder="Período Contrato Determinado (dias)">
+    <input type="text" name="Horário" placeholder="Horário">
+    <input type="text" name="Semana" placeholder="Semana">
+    <input type="text" name="Sábado" placeholder="Sábado">
+    <input type="text" name="Intervalo" placeholder="Intervalo">
+    <input type="text" name="Insalubridade (Sim/Não)" placeholder="Insalubridade (Sim/Não)">
+    <input type="text" name="Periculosidade (Sim/Não)" placeholder="Periculosidade (Sim/Não)">
+    <input type="text" name="Local Registro" placeholder="Local Registro">
+    <input type="text" name="Nº Registro" placeholder="Nº Registro">
+    <input type="text" name="Data HAT" placeholder="Data HAT">
+    <input type="text" name="Data validade" placeholder="Data validade">
+    <input type="text" name="Observações" placeholder="Observações">
+    <input type="text" name="Data envio ficha" placeholder="Data envio ficha">
+    <input type="text" name="EMPRESA ADOR" placeholder="EMPRESA ADOR">
+    <input type="text" name="Escritório Contábil" placeholder="Escritório Contábil">
+    <button type="submit">Salvar Registro</button>
+</form>
 
-            fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(jsonData),
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(response => response.text())
-            .then(result => alert('Registro salvo com sucesso!'))
-            .catch(error => alert('Erro: ' + error));
-        });
-    </script>
+<script>
+    const scriptURL = 'SUA_URL_DO_APPS_SCRIPT'; // Troque por sua URL de Apps Script
+    const form = document.getElementById('registroForm');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach((value, key) => jsonData[key] = value);
+
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(jsonData),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert('Registro salvo com sucesso!');
+            form.reset();
+        })
+        .catch(error => alert('Erro ao salvar: ' + error));
+    });
+</script>
+
 </body>
 </html>
+
 
