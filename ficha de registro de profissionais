@@ -1,46 +1,191 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Ficha de Registro - Cadastro/Edicao</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
-        input, select { width: 100%; padding: 8px; margin: 5px 0; }
-        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; cursor: pointer; }
-        button:hover { background: #0056b3; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha de Registro 2025</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+    h1, h2 { text-align: center; }
+    form { background: #fff; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .section { margin-bottom: 20px; border: 1px solid #ddd; padding: 15px; border-radius: 8px; background: #fefefe; }
+    .section h3 { margin-top: 0; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; border-radius: 4px; border: 1px solid #ccc; }
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
+    .checkbox-group label { font-weight: normal; }
+    button { background: #007bff; color: white; padding: 12px; border: none; cursor: pointer; width: 100%; font-size: 16px; border-radius: 6px; margin-top: 10px; }
+    button:hover { background: #0056b3; }
+    .alert { background: #ffeeba; padding: 10px; border: 1px solid #ffe8a1; border-radius: 6px; margin-top: 15px; }
+</style>
 </head>
 <body>
-    <h2>Cadastro / Edição de Ficha de Registro</h2>
-    <form id="registroForm">
-        <input type="text" name="Nome do Trabalhador" placeholder="Nome do Trabalhador" required>
-        <input type="text" name="CPF" placeholder="CPF" required>
-        <input type="text" name="Telefone" placeholder="Telefone">
-        <input type="text" name="Cargo" placeholder="Cargo">
-        <input type="number" name="Salário" placeholder="Salário">
-        <!-- Adicione aqui todos os campos que deseja -->
-        <button type="submit">Salvar Registro</button>
-    </form>
-    <script>
-        const scriptURL = 'SUA_URL_DO_APPS_SCRIPT';
-        const form = document.getElementById('registroForm');
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const jsonData = {};
-            formData.forEach((value, key) => jsonData[key] = value);
+<h1>Ficha de Registro 2025</h1>
+<form id="registroForm">
 
-            fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(jsonData),
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(response => response.text())
-            .then(result => alert('Registro salvo com sucesso!'))
-            .catch(error => alert('Erro: ' + error));
+    <div class="section">
+        <h3>Dados do Colaborador</h3>
+        <label>Nome do Trabalhador:</label>
+        <input type="text" name="Nome do Trabalhador" required>
+
+        <label>Nome do Pai:</label>
+        <input type="text" name="Nome do Pai">
+
+        <label>Nome da Mãe:</label>
+        <input type="text" name="Nome da Mãe">
+
+        <label>CPF:</label>
+        <input type="text" name="CPF" required>
+
+        <label>PIS:</label>
+        <input type="text" name="PIS">
+
+        <label>Filiação:</label>
+        <input type="text" name="Filiação">
+
+        <label>Cidade de Nascimento:</label>
+        <input type="text" name="Cidade de nascimento">
+
+        <label>Data de Nascimento:</label>
+        <input type="date" name="Data de nascimento">
+
+        <label>Estado Civil:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Estado Civil" value="Casado"> Casado</label>
+            <label><input type="checkbox" name="Estado Civil" value="Solteiro"> Solteiro</label>
+            <label><input type="checkbox" name="Estado Civil" value="União Estável"> União Estável</label>
+            <label><input type="checkbox" name="Estado Civil" value="Viúvo"> Viúvo</label>
+            <label><input type="checkbox" name="Estado Civil" value="Divorciado"> Divorciado</label>
+        </div>
+
+        <label>Raça/Etnia:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Raça/Etinia" value="Parda"> Parda</label>
+            <label><input type="checkbox" name="Raça/Etinia" value="Preto"> Preto</label>
+            <label><input type="checkbox" name="Raça/Etinia" value="Amarela"> Amarela</label>
+            <label><input type="checkbox" name="Raça/Etinia" value="Branca"> Branca</label>
+            <label><input type="checkbox" name="Raça/Etinia" value="Indígena"> Indígena</label>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Endereço e Contato</h3>
+        <label>Endereço:</label>
+        <input type="text" name="Endereço">
+
+        <label>Bairro:</label>
+        <input type="text" name="Bairro">
+
+        <label>Cidade/UF:</label>
+        <input type="text" name="Cidade/ UF">
+
+        <label>CEP:</label>
+        <input type="text" name="CEP">
+
+        <label>Telefone:</label>
+        <input type="text" name="Telefone">
+
+        <label>Escolaridade:</label>
+        <input type="text" name="Escolaridade">
+    </div>
+
+    <div class="section">
+        <h3>Dados do Contrato</h3>
+        <label>Data de Admissão:</label>
+        <input type="date" name="Admissão (Data)">
+
+        <label>Cargo:</label>
+        <input type="text" name="Cargo">
+
+        <label>Salário:</label>
+        <input type="number" step="0.01" name="Salário">
+
+        <label>Horário:</label>
+        <input type="text" name="Horário">
+
+        <label>Semana:</label>
+        <input type="text" name="Semana">
+
+        <label>Sábado:</label>
+        <input type="text" name="Sábado">
+
+        <label>Intervalo:</label>
+        <input type="text" name="Intervalo">
+
+        <label>Contrato de Experiência:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Contrato de Experiência (Sim/Não)" value="Sim"> Sim</label>
+            <label><input type="checkbox" name="Contrato de Experiência (Sim/Não)" value="Não"> Não</label>
+        </div>
+        <label>Período Experiência (dias):</label>
+        <input type="text" name="Período Experiência (dias)">
+
+        <label>Contrato Prazo Determinado:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Contrato Prazo Determinado (Sim/Não)" value="Sim"> Sim</label>
+            <label><input type="checkbox" name="Contrato Prazo Determinado (Sim/Não)" value="Não"> Não</label>
+        </div>
+        <label>Período Contrato Determinado (dias):</label>
+        <input type="text" name="Período Contrato Determinado (dias)">
+
+        <label>Adicionais:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Insalubridade (Sim/Não)" value="Sim"> Insalubridade</label>
+            <label><input type="checkbox" name="Periculosidade (Sim/Não)" value="Sim"> Periculosidade</label>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Dados do Empregador</h3>
+        <label>EMPREGADOR:</label>
+        <input type="text" name="EMPREGADOR">
+
+        <label>Escritório Contábil:</label>
+        <input type="text" name="Escritório Contábil">
+    </div>
+
+    <div class="section">
+        <h3>Observações</h3>
+        <label>Observações:</label>
+        <input type="text" name="Observações">
+    </div>
+
+    <button type="submit">Salvar Registro</button>
+
+    <div class="alert">
+        <strong>ATENÇÃO:</strong> A ficha deve ser enviada até as 16:30 para início no dia seguinte. Não aceitamos registros sem ficha preenchida e exame.
+    </div>
+</form>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzexwd_dIIT5Xt_BuF42ziaSFPqbdT1y3T5gibHzc5R3KMBTsu6hwyecUvfluuvgw/exec'; // substitua pela sua URL
+    const form = document.getElementById('registroForm');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach((value, key) => {
+            if (jsonData[key]) {
+                jsonData[key] += ', ' + value; // Para múltiplos checkboxes
+            } else {
+                jsonData[key] = value;
+            }
         });
-    </script>
+
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(jsonData),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert('Registro salvo com sucesso!');
+            form.reset();
+        })
+        .catch(error => alert('Erro: ' + error));
+    });
+</script>
 </body>
 </html>
