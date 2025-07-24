@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha de Registro - Cadastro/Edicao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+        input, select { width: 100%; padding: 8px; margin: 5px 0; }
+        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h2>Cadastro / Edição de Ficha de Registro</h2>
+    <form id="registroForm">
+        <input type="text" name="Nome do Trabalhador" placeholder="Nome do Trabalhador" required>
+        <input type="text" name="CPF" placeholder="CPF" required>
+        <input type="text" name="Telefone" placeholder="Telefone">
+        <input type="text" name="Cargo" placeholder="Cargo">
+        <input type="number" name="Salário" placeholder="Salário">
+        <!-- Adicione aqui todos os campos que deseja -->
+        <button type="submit">Salvar Registro</button>
+    </form>
+    <script>
+        const scriptURL = 'SUA_URL_DO_APPS_SCRIPT';
+        const form = document.getElementById('registroForm');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const jsonData = {};
+            formData.forEach((value, key) => jsonData[key] = value);
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(jsonData),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.text())
+            .then(result => alert('Registro salvo com sucesso!'))
+            .catch(error => alert('Erro: ' + error));
+        });
+    </script>
+</body>
+</html>
